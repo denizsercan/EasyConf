@@ -1,0 +1,2 @@
+# EasyConf
+ConferenceManagementSystem - EasyConf
