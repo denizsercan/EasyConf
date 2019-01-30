@@ -1,0 +1,150 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="finalProject.main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title>Ana Sayfa</title>
+    <meta name="description" content="website description" />
+    <meta name="keywords" content="website keywords, website keywords" />
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+    <link rel="stylesheet" href="/style/style.css" />
+
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+
+        <div id="main">
+            <div id="header">
+                <div id="logo">
+                    <div id="logo_text">
+                        <!-- class="logo_colour", allows you to change the colour of the text -->
+                        <h1><a href="home.aspx">easy<span class="logo_colour">CONF</span></a></h1>
+
+                    </div>
+                    <asp:Panel ID="pnlgiris" runat="server">
+                        <div class="slogan"><a href="login.aspx">Login</a></div>
+                        <div class="slogan"><a href="register.aspx">Register</a></div>
+                    </asp:Panel>
+                    <asp:Panel class="slogan" ID="pnlkullanici" runat="server">
+                        Hoşgeldiniz,
+                        <asp:Label ID="lblKullaniciAdi" Text="" runat="server" />
+                        <asp:Button ID="btnClick" Text="Çıkış" runat="server" OnClick="btnCikis_Click" />
+                    </asp:Panel>
+                </div>
+
+                <link href="style/StyleSheet1.css" rel="stylesheet" />
+
+                <%--  <div id="menubar">
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="home.aspx">Ana Sayfa</a></li>
+
+          <li><a href="#">Conference</a>
+              <ul>
+                <li><a href="conference.aspx">All Conferences</a></li>
+                <li><a href='conference.aspx'>Create New Conference</a></li>
+              </ul>                        
+          </li>
+
+          <li><a href="page.html">Profil</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+      </div>--%>
+
+
+                <div id="nav">
+                    <ul>
+                        <li><a href="home.aspx"><span>Home</span></a></li>
+                        <li class="dropdown"><a href="#"><span>Conference</span></a>
+                            <ul>
+                                <li><a href="AllConferences.aspx"><span>All Conferences</span></a></li>
+                                <li><a href="Conference.aspx"><span>Create New Conference</span></a></li>
+                            </ul>
+                        </li>
+
+                         <li class="dropdown"><a href="#"><span>Profile</span></a>
+                            <ul>
+                                <li><a href="MyConferences.aspx"><span>My Conferences</span></a></li>
+                               
+                            </ul>
+                        </li>
+
+                      <%--  <li><a href="Profile.aspx"><span>Profile</span></a></li>--%>
+                        <li><a href="Contact.aspx"><span>Contact</span></a></li>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div id="site_content">
+                <div id="sidebar_container">
+                    <img class="paperclip" src="style/paperclip.png" alt="paperclip" />
+
+                    <div class="sidebar">
+                        <!-- insert your sidebar items here -->
+
+
+                        <div class="konferanslar">
+                            <div class="ust">
+                                <h4>Son Konferanslar</h4>
+                            </div>
+
+                            <div class="alt">
+
+                                <asp:ListView ID="lstkonferans" runat="server" OnItemCommand="lstkonferans_ItemCommand">
+                                    <ItemTemplate>
+
+
+
+                                        <div class="konferans-wrap">
+
+
+
+
+                                            <asp:LinkButton ID="lbSelect" runat="server" CommandName="GetData" CommandArgument='<%# Eval("Id") %>'>
+
+                                                <asp:Label ID="labelId" Text='<%#Eval("Id")%>' runat="server" Visible="False" />
+                                                <asp:Label Text='<%#Eval("conferenceName")%>' runat="server" /><br />
+                                                <asp:Label Text='<%#Eval("conferencePlace")%>' runat="server" /><br />
+                                                <asp:Label Text='<%#Eval("conferenceDate")%>' runat="server" /><br />
+
+                                            </asp:LinkButton></div></ItemTemplate></asp:ListView></div></div></div><div id="content">
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </div>
+            </div>
+                </div>
+
+
+
+
+        </div>
+
+
+
+    </form>
+</body>
+</html>
